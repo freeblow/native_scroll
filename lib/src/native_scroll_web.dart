@@ -51,7 +51,7 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
         // 隐藏 WebKit 浏览器的滚动条
           ..append(StyleElement()
             ..innerHtml = '''
-                #your_view_id::-webkit-scrollbar {
+                #${_viewId}::-webkit-scrollbar {
                   display: none;
                 }
               ''')

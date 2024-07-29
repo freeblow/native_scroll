@@ -44,6 +44,17 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
           ..style.overflow = 'scroll'
           ..style.width = '100%'
           ..style.height = '100%'
+        // 隐藏滚动条的具体样式
+          ..style.setProperty('scrollbar-width', 'none') // For Firefox
+          ..style.setProperty('-ms-overflow-style', 'none') // For Internet Explorer and Edge
+          ..style.setProperty('overflow', '-moz-scrollbars-none') // For other browsers
+        // 隐藏 WebKit 浏览器的滚动条
+          ..append(StyleElement()
+            ..innerHtml = '''
+                #your_view_id::-webkit-scrollbar {
+                  display: none;
+                }
+              ''')
           // We need to cancel scroll events to stop them getting to Flutter
           ..onWheel.listen((event) => event.stopPropagation())
           ..onMouseWheel.listen((event) => event.stopPropagation())

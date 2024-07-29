@@ -16,7 +16,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home: Scaffold(
+        backgroundColor: Colors.red,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {

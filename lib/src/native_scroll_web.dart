@@ -4,7 +4,7 @@ library native_scroll;
 import 'package:flutter/widgets.dart';
 import 'package:js/js.dart';
 import 'dart:html';
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 class NativeScrollBuilder extends StatefulWidget {
   final Widget Function(BuildContext context, ScrollController controller)

@@ -1,12 +1,14 @@
 import 'package:flutter/widgets.dart';
 
 class NativeScrollBuilder extends StatefulWidget {
+  ScrollController? scrollController;
   final Widget Function(BuildContext context, ScrollController controller)
       builder;
 
-  const NativeScrollBuilder({
+  NativeScrollBuilder({
     Key? key,
     required this.builder,
+    this.scrollController
   }) : super(key: key);
 
   @override
@@ -19,7 +21,11 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+    if(widget.scrollController != null){
+      _scrollController = widget.scrollController!;
+    }else{
+      _scrollController = ScrollController();
+    }
   }
 
   @override

@@ -7,12 +7,14 @@ import 'dart:html';
 import 'dart:ui_web' as ui;
 
 class NativeScrollBuilder extends StatefulWidget {
+ ScrollController? scrollController;
   final Widget Function(BuildContext context, ScrollController controller)
       builder;
 
-  const NativeScrollBuilder({
+  NativeScrollBuilder({
     Key? key,
     required this.builder,
+    this.scrollController
   }) : super(key: key);
 
   @override
@@ -30,7 +32,12 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+    if(widget.scrollController != null){
+      _scrollController = widget.scrollController!;
+    }else{
+      _scrollController = ScrollController();
+    }
+
     _globalId++;
     _viewId = 'native-scroll-view-$_globalId';
 

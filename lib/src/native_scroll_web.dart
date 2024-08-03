@@ -123,11 +123,12 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        HtmlElementView(viewType: _viewId),
+
         ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: widget.builder(context, _scrollController),
         ),
+        HtmlElementView(viewType: _viewId),
 
       ],
     );
